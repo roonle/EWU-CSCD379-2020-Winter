@@ -1,5 +1,5 @@
 # Assignment
-Seeing if this works
+
 The purpose of this assignment is to learn the following:
 
 - Leveraging code analysis
