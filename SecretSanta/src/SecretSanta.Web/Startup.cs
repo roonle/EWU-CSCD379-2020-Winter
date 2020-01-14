@@ -14,7 +14,9 @@ namespace SecretSanta.Web
         //}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+#pragma warning disable CA1822 // Mark members as static
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+#pragma warning restore CA1822 // Mark members as static comment: the fix to change to static will break the code, microsoft said it safe to suppress if this happened
         {
             if (env.IsDevelopment())
             {
@@ -27,7 +29,7 @@ namespace SecretSanta.Web
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello from Web!");
+                    await context.Response.WriteAsync("Hello from Web!").ConfigureAwait(true);
                 });
             });
         }
