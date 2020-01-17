@@ -1,5 +1,6 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System;
 
 namespace SecretSanta.Business.Tester
 {
@@ -7,24 +8,27 @@ namespace SecretSanta.Business.Tester
     public class GiftTests
     {
         [TestMethod]
-#pragma warning disable CA1707 // Identifiers should not contain underscores
+
         public void Create_Gift_Success()
-#pragma warning restore CA1707 // Identifiers should not contain underscores comment: Unit Test are okay
         {
             //arrange
-            ArrayList gifts = new ArrayList();
+            List<Gift> gifts = new List<Gift>();
             User user = new User(2, "John", "Doe", gifts);
-            int Id = 5;
-            string Title = "Dreams";
-            string Description = "Book";
-            string Url = "Amazon.com";
+            int id = 5;
+            string title = "Dreams";
+            string description = "Book";
+            string url = "Amazon.com";
 
 
             //act
-            Gift gift = new Gift(Id, Title, Description, Url, user);
+            Gift gift = new Gift(id, title, description, url, user);
             //assert
-            // Assert.AreEqual(Id, gift.Id, "Id value was unexpected");
-            //Assert.AreEqual<string>(Title, gift.Title, "Title value was unexpected");
+            Assert.AreEqual(id, gift.Id, "Id value was unexpected");
+            Assert.AreEqual<string>(title, gift.Title, "Title value was unexpected");
+            Assert.AreEqual<string>(description, gift.Description, "Title value was unexpected");
+            Assert.AreEqual<string>(url, gift.Url, "Title value was unexpected");
         }
+
+      
     }
 }

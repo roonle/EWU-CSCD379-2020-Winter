@@ -6,25 +6,25 @@ namespace SecretSanta.Business
 {
     public class Gift
     {
-        private int _Id;
-        private string _Title;
-        private string _Description;
-        private string _Url;
-        private User _User;
+        public int Id { get; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Url { get; set; }
+        public User User { get; set; }
 
-#pragma warning disable CA1054 // Uri parameters should not be strings
-        public Gift(int Id, string Title, string Description, string Url, User User)
-#pragma warning restore CA1054 // Uri parameters should not be strings comment: Allowing to be to spec of the assigment
+
+
+        public Gift(int id, string title, string description, string url, User user)
+
+
         {
-            this._Id = Id;
-            this._Title = Title;
-            this._Description = Description;
-            this._Url = Url;
-            this._User = User;
+            Id = id;
+            Title = title ?? throw new ArgumentNullException(nameof(title));
+            Description = description ?? throw new ArgumentNullException(nameof(description));
+            Url = url ?? throw new ArgumentNullException(nameof(url));
+            User = user ?? throw new ArgumentNullException(nameof(user));
         }
 
-        public int Id { get; }
 
-        public string Title { get; set; }
     }
 }
