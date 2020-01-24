@@ -12,9 +12,9 @@ namespace SecretSanta.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> User { get; set; }
-        public DbSet<Gift> Gift { get; set; }
-        public DbSet<Group> Group { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Gift> Gifts { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 #nullable disable
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
