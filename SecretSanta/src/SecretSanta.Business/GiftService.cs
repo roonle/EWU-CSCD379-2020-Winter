@@ -2,6 +2,7 @@
 using SecretSanta.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SecretSanta.Business
 {
@@ -14,5 +15,12 @@ namespace SecretSanta.Business
 
         public override async Task<Gift> FetchByIdAsync(int id) =>
             await ApplicationDbContext.Set<Gift>().Include(nameof(Gift.User)).SingleAsync(item => item.Id == id);
+
+        public override async Task<List<Gift>> FetchAllAsync()
+        {
+            return await ApplicationDbContext.Gifts.Include(gift => gift.User).ToListAsync();
+        }
     }
+
+
 }
