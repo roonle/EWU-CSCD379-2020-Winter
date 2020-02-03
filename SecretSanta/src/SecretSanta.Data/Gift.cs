@@ -17,7 +17,7 @@ namespace SecretSanta.Data
         public User User { get; set; }
 #nullable enable
         [Required]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
 
         public Gift(string title, string description, string url, User user) :
@@ -31,12 +31,12 @@ namespace SecretSanta.Data
             User = user;
         }
 
-        private Gift(string title, string description, string url, int? userId)
+        private Gift(string title, string description, string url, int userId)
         {
             Title = title;
             Url = url;
             Description = description;
-            UserId = userId ?? throw new ArgumentNullException(nameof(userId));
+            UserId = userId; 
         }
 
        
