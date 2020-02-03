@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecretSanta.Data
 {
@@ -15,6 +16,31 @@ namespace SecretSanta.Data
 #nullable disable
         public User User { get; set; }
 #nullable enable
-        public int UserId { get; set; }
+        [Required]
+        public int? UserId { get; set; }
+
+
+        public Gift(string title, string description, string url, User user) :
+// Justification: not going to be null
+#pragma warning disable CA1062 // Validate arguments of public methods
+            this(title, description, url, user.Id)
+#pragma warning restore CA1062 // Validate arguments of public methods
+
+
+        {
+            User = user;
+        }
+
+        private Gift(string title, string description, string url, int? userId)
+        {
+            Title = title;
+            Url = url;
+            Description = description;
+            UserId = userId ?? throw new ArgumentNullException(nameof(userId));
+        }
+
+       
     }
+
+
 }
