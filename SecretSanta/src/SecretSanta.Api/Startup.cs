@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using SecretSanta.Business;
 using SecretSanta.Business.Services;
 using SecretSanta.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SecretSanta.Api
 {
@@ -25,7 +26,9 @@ namespace SecretSanta.Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IGroupService, GroupService>();
 
-            services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.EnableSensitiveDataLogging()
+                    .UseSqlite("Data Source = DatabaseFile.db"));
 
             services.AddAutoMapper(new[] { typeof(AutomapperConfigurationProfile).Assembly });
         }
