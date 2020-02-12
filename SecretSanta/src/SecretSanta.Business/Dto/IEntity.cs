@@ -4,8 +4,8 @@ using System.Text;
 
 namespace SecretSanta.Business.Dto
 {
-    public class Gift : GiftInput, IEntity
+    public interface IEntity
     {
-        public int Id { get; set; }
+        public int Id { get; }
     }
 }

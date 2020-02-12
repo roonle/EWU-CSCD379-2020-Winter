@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SecretSanta.Data;
+using SecretSanta.Business.Dto;
 
 namespace SecretSanta.Business.Services
 {

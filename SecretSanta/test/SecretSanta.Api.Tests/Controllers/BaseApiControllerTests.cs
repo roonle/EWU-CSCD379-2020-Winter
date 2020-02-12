@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecretSanta.Api.Controllers;
-using SecretSanta.Business;
+using SecretSanta.Business.Dto;
+using SecretSanta.Business.Services;
 using SecretSanta.Data;
 using System;
 using System.Collections.Generic;
