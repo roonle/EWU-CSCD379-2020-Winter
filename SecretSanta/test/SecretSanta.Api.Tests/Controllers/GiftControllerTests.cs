@@ -132,7 +132,7 @@ namespace SecretSanta.Api.Tests.Controllers
             Assert.AreEqual(im.Description, returnedGift.Description);
             Assert.AreEqual(im.Url, returnedGift.Url);
             Assert.AreEqual(im.UserId, returnedGift.UserId);
-
+            
 
         }
 

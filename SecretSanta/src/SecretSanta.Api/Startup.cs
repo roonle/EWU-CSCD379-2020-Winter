@@ -40,7 +40,7 @@ namespace SecretSanta.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseOpenApi();
             app.UseSwaggerUi3();
 
