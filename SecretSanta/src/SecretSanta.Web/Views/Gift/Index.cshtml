@@ -1,17 +1,11 @@
 ﻿@model IEnumerable<SecretSanta.Web.Api.Gift>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Gift";
 }
 
-<!DOCTYPE html>
+<h1>View</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>View</title>
-</head>
-<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -63,5 +57,3 @@
 }
     </tbody>
 </table>
-</body>
-</html>

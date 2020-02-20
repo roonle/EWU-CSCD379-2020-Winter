@@ -11,6 +11,7 @@ namespace SecretSanta.Web.Controllers
 {
     public class GiftController : Controller
     {
+        public IHttpClientFactory ClientFactory { get; }
         public GiftController(IHttpClientFactory clientFactory)
         {
             if (clientFactory is null)
@@ -21,7 +22,7 @@ namespace SecretSanta.Web.Controllers
             ClientFactory = clientFactory;
         }
 
-        public IHttpClientFactory ClientFactory { get; }
+      
 
        
         public async Task<ActionResult> Index()
