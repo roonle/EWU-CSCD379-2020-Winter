@@ -12,6 +12,7 @@ namespace SecretSanta.Web.Controllers
 {
     public class GroupsController : Controller
     {
+        public IHttpClientFactory ClientFactory { get; }
         public GroupsController(IHttpClientFactory clientFactory)
         {
             HttpClient httpClient = clientFactory?.CreateClient("SecretSantaApi") ?? throw new ArgumentNullException(nameof(clientFactory));
@@ -25,5 +26,48 @@ namespace SecretSanta.Web.Controllers
             ICollection<Group> groups = await Client.GetAllAsync();
             return View(groups);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> Create(GroupInput groupInput)
+        {
+            ActionResult result = View(groupInput);
+
+            if (ModelState.IsValid)
+            {
+                HttpClient httpClient = ClientFactory.CreateClient("SecretSantaApi");
+
+                var client = new GroupClient(httpClient);
+                var createdAuthor = await client.PostAsync(groupInput);
+
+                result = RedirectToAction(nameof(Index));
+            }
+
+            return result;
+        }
+
+        public async Task<ActionResult> Edit(int id)
+        {
+            HttpClient httpClient = ClientFactory.CreateClient("SecretSantaApi");
+
+            var client = new GroupClient(httpClient);
+            var fetchedGroup = await client.GetAsync(id);
+
+            return View(fetchedGroup);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(int id, GroupInput GroupInput)
+        {
+            HttpClient httpClient = ClientFactory.CreateClient("SecretSantaApi");
+
+            var client = new GroupClient(httpClient);
+            var updatedGroup = await client.PutAsync(id, GroupInput);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
+
