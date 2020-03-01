@@ -55,7 +55,7 @@ module.exports = (env, argv) => {
                     loader: "ts-loader",
                     exclude: /node_modules/
                 }
-                }
+                
             ]
         },
         plugins: [
