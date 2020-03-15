@@ -139,6 +139,45 @@ namespace SecretSanta.Web.Tests
             Assert.IsTrue(text.Contains("Welcome to your secret santa app"));
         }
 
+        [TestMethod]
+
+        public void CreateGift() {
+            string sentInTitle = "Test title";
+            string sentInDescription = "Test description";
+            string sentInUrl = "Test url";
+            
+            
+            //nagivate to gift
+            Driver.Navigate().GoToUrl(new Uri("https://localhost:44394/Gifts"));
+
+            //find create gift button
+            Driver.FindElement(By.CssSelector("#createGift")).Click();
+
+            IWebElement element = Driver.FindElement(By.Id("gift-title-input"));
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+            element.SendKeys(sentInTitle);
+
+            Assert.AreEqual<string>(sentInTitle, element.GetProperty("value"));
+
+            IWebElement element1 = Driver.FindElement(By.Id("gift-description-input"));
+            element1.SendKeys(sentInDescription);
+            Assert.AreEqual<string>(sentInDescription, element1.GetProperty("value"));
+
+            IWebElement element2 = Driver.FindElement(By.Id("gift-url-input"));
+            element1.SendKeys(sentInUrl);
+            Assert.AreEqual<string>(sentInUrl, element2.GetProperty("value"));
+#pragma warning restore CA1303 // Do not pass literals as localized parameters justification(testing proposses)
+
+            Driver.FindElement(By.Id("submit")).Click();
+
+            Screenshot saveAzure = ((ITakesScreenshot)Driver).GetScreenshot();
+
+            string path = $"{Directory.GetCurrentDirectory()}Test.png";
+            saveAzure.SaveAsFile(path, ScreenshotImageFormat.Png);
+
+            TestContext.AddResultFile(path);
+        }
+
         [TestCleanup()]
         public void TestCleanup()
         {
