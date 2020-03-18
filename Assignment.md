@@ -26,7 +26,7 @@ In the pull request include the following:
 - A link to your published web site. 
 	https://webrle90.azurewebsites.net
 - A screenshot showing the Azure Resource Group with all resources. AzureResourceGroup.jpg included in solution
-- A screenshot showing the release pipeline that did the deployment.
+- A screenshot showing the release pipeline that did the deployment. pipeline1 and pipeline2.jpg included in solution
 - Updated build pipeline yaml file.
 
 ## Documentation 
